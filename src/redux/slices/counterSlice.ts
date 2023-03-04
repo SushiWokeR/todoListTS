@@ -79,3 +79,5 @@ export const incrementIfOdd =
   };
 
 export default counterSlice.reducer;
+
+// TODO: снести

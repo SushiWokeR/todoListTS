@@ -16,5 +16,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "src/@types", "src/redux"]
+  "include": ["src", "src/@types"]
 }
