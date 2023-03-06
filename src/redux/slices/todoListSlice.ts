@@ -29,18 +29,24 @@ export const todoListSlice = createSlice({
   reducers: {
     addTodoItem: (state, action) => {
       // TODO: не смог типизировать экшн
-
       state.allTodoItems.push({
-        id: action.payload.id++,
+        id: action.payload.id,
         todoItemText: action.payload.todoItemText,
         completed: false,
         priorityStatus: TodoItemStatusEnum.DEFAULT,
       });
     },
+    setItemDone: (state, action) => {
+      const findItem = state.allTodoItems.find((item) => item.id === action.payload);
+
+      if (findItem) {
+        findItem.completed = !findItem.completed;
+      }
+    },
   },
 });
 
-export const { addTodoItem } = todoListSlice.actions;
+export const { addTodoItem, setItemDone } = todoListSlice.actions;
 
 export const selectTodo = (state: RootState) => state.todoList;
 
