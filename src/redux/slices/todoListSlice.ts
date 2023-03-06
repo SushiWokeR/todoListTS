@@ -9,6 +9,7 @@ export enum TodoItemStatusEnum {
 }
 
 export type TodoItemProps = {
+  id: number;
   todoItemText: string;
   completed: boolean;
   priorityStatus: TodoItemStatusEnum;
@@ -28,17 +29,14 @@ export const todoListSlice = createSlice({
   reducers: {
     addTodoItem: (state, action) => {
       // TODO: не смог типизировать экшн
-      console.log(action.payload);
 
       state.allTodoItems.push({
+        id: action.payload.id++,
         todoItemText: action.payload.todoItemText,
         completed: false,
         priorityStatus: TodoItemStatusEnum.DEFAULT,
       });
     },
-    // addTodoItem: (state, action: PayloadAction<string>) => {
-    //   state.allTodoItems = state.todoItemText.push();
-    // },
   },
 });
 
